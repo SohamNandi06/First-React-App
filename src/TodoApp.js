@@ -29,16 +29,19 @@ function TodoApp() {
         Add
       </button>
 
-      <ul>
+      <ol>
         {tasks.map((t, index) => (
           <li key={index} style={{ margin: '8px 0' }}>
             {t}{' '}
             <button onClick={() => deleteTask(index)} style={{ marginLeft: '10px' }}>
               ❌
             </button>
+            <input type="checkbox" 
+            onClick={(e)=> deleteTask(index)} style={{ marginLeft: '10px' }}
+            ></input>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 }
