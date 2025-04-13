@@ -21,8 +21,8 @@ function App() {
   };
 
   return (
-    <div>
-      <div style={{ marginBottom: '1rem' }}>
+    <div >
+      <div className='navi' style={{ marginBottom: '1rem' }}>
         <button className='counter-btn' onClick={() => setActiveComponent('counter')}>Show Counter</button>
         <button className='form-btn' onClick={() => setActiveComponent('form')}>Show Name Form</button>
         <button className='todo-btn' onClick={() => setActiveComponent('todo')}>Show Todo App</button>

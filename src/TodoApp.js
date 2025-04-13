@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css'
 
 function TodoApp() {
   const [task, setTask] = useState('');
@@ -16,33 +17,33 @@ function TodoApp() {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
-      <h2>📝 My To-Do List</h2>
-      <input
-        type="text"
-        placeholder="Enter a task"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        style={{ width: '70%' }}
-      />
-      <button onClick={addTask} style={{ marginLeft: '10px' }}>
-        Add
-      </button>
+    <div className="todo-container">
+  <h2 className="todo-header">📝 My To-Do List</h2>
+  
+  <div className="input-section">
+    <input
+      type="text"
+      placeholder="Enter a task"
+      value={task}
+      onChange={(e) => setTask(e.target.value)}
+    />
+    <button onClick={addTask}>Add</button>
+  </div>
 
-      <ol>
-        {tasks.map((t, index) => (
-          <li key={index} style={{ margin: '8px 0' }}>
-            {t}{' '}
-            <button onClick={() => deleteTask(index)} style={{ marginLeft: '10px' }}>
-              ❌
-            </button>
-            <input type="checkbox" 
-            onClick={(e)=> deleteTask(index)} style={{ marginLeft: '10px' }}
-            ></input>
-          </li>
-        ))}
-      </ol>
-    </div>
+  <ol className="task-list">
+    {tasks.map((t, index) => (
+      <li key={index} className="task-item">
+        {t}
+        <button onClick={() => deleteTask(index)}>❌</button>
+        <input
+          type="checkbox"
+          onClick={() => deleteTask(index)}
+        />
+      </li>
+    ))}
+  </ol>
+</div>
+
   );
 }
 

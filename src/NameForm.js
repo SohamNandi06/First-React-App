@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './App.css'
 function NameForm() {
   const [name, setName] = useState('');
   const [greeting, setGreeting] = useState('');
@@ -17,6 +17,7 @@ function NameForm() {
 
   return (
     <div>
+    <div className='form-main'>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
@@ -24,7 +25,10 @@ function NameForm() {
         </label>
         <button type="submit">Submit</button>
       </form>
+      <div className='greet'>
       {greeting && <p>{greeting}</p>} {/* Display the greeting */}
+      </div>
+    </div>
     </div>
   );
 }
