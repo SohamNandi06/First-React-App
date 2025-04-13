@@ -63,6 +63,8 @@ button[type="submit"]:hover {
   color: #333;
 }
 
+/*todo*/
+
 .todo-container {
   padding: 20px;
   max-width: 400px;
@@ -110,11 +112,19 @@ button[type="submit"]:hover {
 }
 
 .task-item {
-  display: flex;
+  display: grid;
+  overflow: wrap;
+  grid-template-columns: 100px 100px 100px;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
   font-size: 16px;
+}
+.task-item > div:first-child {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  min-width: 0; /* VERY IMPORTANT to allow text shrinking/wrapping in grids */
 }
 
 .task-item button {
@@ -124,10 +134,44 @@ button[type="submit"]:hover {
   cursor: pointer;
   font-size: 18px;
 }
+.delete-btn{
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  font-size: 16px;
+}
+.dlt{
+  border-radius: 10px;
+  padding: 2px 2px; 
+  margin-left: 0;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 20px;
+}
+.taskstat{
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  font-size: 16px;
+}
+.taskstatdiv{
+  border-radius: 10px;
+  padding: 2px 2px; 
+  margin-left: 0;
+  background-color: rgb(9, 3, 90);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 20px;
+}
 
 .task-item input[type="checkbox"] {
   margin-left: 10px;
 }
+
+/*counter*/
 
 .counter-wrapper {
   display: flex;
@@ -167,7 +211,7 @@ button[type="submit"]:hover {
   background-color: #45a049;
 }
 
-
+/*buttons in app.js*/
 .counter-btn {
   background-color: #ff6b6b;
   color: white;

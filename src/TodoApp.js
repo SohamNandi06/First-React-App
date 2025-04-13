@@ -4,10 +4,13 @@ import './App.css'
 function TodoApp() {
   const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
+  const [taskStatus, setTaskStatus] = useState([]);
+
 
   const addTask = () => {
     if (task.trim() === '') return;
     setTasks([...tasks, task]);
+    setTaskStatus([...taskStatus, 'Not done']);
     setTask('');
   };
 
@@ -15,7 +18,12 @@ function TodoApp() {
     const newTasks = tasks.filter((_, i) => i !== index);
     setTasks(newTasks);
   };
-
+  const doneTask = (index) => {
+    const newStatus = [...taskStatus];
+    newStatus[index] = newStatus[index] === 'Not done' ? 'Done' : 'Not done'; // toggle
+    setTaskStatus(newStatus);
+  };
+  
   return (
     <div className="todo-container">
   <h2 className="todo-header">📝 My To-Do List</h2>
@@ -30,18 +38,22 @@ function TodoApp() {
     <button onClick={addTask}>Add</button>
   </div>
 
-  <ol className="task-list">
+  <div className="task-list">
     {tasks.map((t, index) => (
-      <li key={index} className="task-item">
+      
+      <div key={index} className="task-item">
+        <div>
         {t}
-        <button onClick={() => deleteTask(index)}>❌</button>
-        <input
-          type="checkbox"
-          onClick={() => deleteTask(index)}
-        />
-      </li>
+        </div>
+        <div className='dlt'>
+        <button className='delete-btn' onClick={() => deleteTask(index)}>Delete</button>
+        </div>
+        <div className='taskstatdiv'>
+        <button className='taskstat' onClick={() => doneTask(index)}>{taskStatus[index]}</button>
+        </div>
+      </div>
     ))}
-  </ol>
+  </div>
 </div>
 
   );
